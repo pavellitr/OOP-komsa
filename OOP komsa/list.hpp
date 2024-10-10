@@ -141,14 +141,16 @@ public:
         crutch++;
     };
 
-    void popBack() {
+    T popBack() {
         Node<T>* current = head;
         while (current->next->next != NULL) {
             current = current->next;
         }
+        T ret = current->next->data;
         delete current->next;
         current->next = NULL;
-        crutch++;
+        crutch--;
+        return ret;
     }
 
     void print() {
