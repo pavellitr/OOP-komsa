@@ -130,7 +130,10 @@
     <ClCompile Include="OOP komsa.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="card.hpp" />
+    <ClInclude Include="GM.hpp" />
     <ClInclude Include="list.hpp" />
+    <ClInclude Include="mixer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

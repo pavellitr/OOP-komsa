@@ -143,12 +143,21 @@ public:
 
     T popBack() {
         Node<T>* current = head;
-        while (current->next->next != NULL) {
-            current = current->next;
+        T ret;
+        if (current->next == NULL) {
+            ret = current->data;
+            delete current;
+            current = NULL;
+            head = NULL;
         }
-        T ret = current->next->data;
-        delete current->next;
-        current->next = NULL;
+        else {
+            while (current->next->next != NULL) {
+                current = current->next;
+            }
+            ret = current->next->data;
+            delete current->next;
+            current->next = NULL;
+        }
         crutch--;
         return ret;
     }
@@ -175,7 +184,7 @@ public:
     };
 
 
-    List& operator=(const List& list) {
+    List& operator = (const List& list) {
         if (this == &list) {
             return *this;
         }
@@ -195,7 +204,7 @@ public:
         return *this;
     }
 
-    List& operator=(List&& list) {
+    List& operator = (List&& list) {
         if (this != &list) {
             while (head) {
                 Node<T>* temp = head;
